@@ -1,0 +1,97 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    background-color: #0a0a0a; /* Deep black for a neon effect */
+    color: #0ff; /* Neon cyan */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    text-shadow: 0 0 10px #0ff; /* Glowing effect */
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90vw;
+    max-width: 330px;
+    gap: 5px;
+    background-color: #111;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    border: 2px solid #0ff;
+    border-radius: 6px;
+    box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
+    transition: background-color 0.2s ease;
+    color: white;
+  }
+  
+  .cell:hover {
+    background-color: #333;
+  }
+  
+  #message {
+    margin-top: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ff0;
+    font-size: 1.2em;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  button {
+    background-color: black;
+    border: none;
+    color: #0ff;
+    padding: 15px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0ff;
+    color: #000;
+  }
+  
+  @media (max-width: 400px) {
+    .cell {
+      width: 80px;
+      height: 80px;
+      font-size: 1.8em;
+    }
+    .board {
+      max-width: 270px;
+    }
+    button {
+      padding: 10px;
+      font-size: 0.9em;
+    }
+  }
