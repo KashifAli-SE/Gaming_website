@@ -29,13 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleMove(event) {
         if (gameOver) return;
+    
         let col = getColumnFromEvent(event);
-        if (col === undefined) return;
-        
+        if (col === undefined || col === null) return;
+        col = parseInt(col); // Ensure it's a number
+    
         for (let r = ROWS - 1; r >= 0; r--) {
             if (board[r][col] === 0) {
                 board[r][col] = currentPlayer;
                 updateBoard();
+    
                 if (checkWin()) {
                     setGameStatus(`Player ${currentPlayer} wins! 🎉`, true, "win");
                     return;
@@ -44,11 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     setGameStatus("It's a draw! 🤝", true, "draw");
                     return;
                 }
-                switchPlayer();
+    
+                // Disable board temporarily before switching players
+                gameBoard.style.pointerEvents = "none";
+    
+                setTimeout(() => {
+                    switchPlayer();
+                    gameBoard.style.pointerEvents = "auto"; // Re-enable after switching
+                }, 500);
+    
                 return;
             }
         }
     }
+    
 
     function getColumnFromEvent(event) {
         if (event.type === "touchend") {
@@ -125,3 +137,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createBoard();
 });
+
